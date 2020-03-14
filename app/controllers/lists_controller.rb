@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
   post '/api/lists' do
+    status 201
+
     result = List.new(params[:name])
     if result
       json(

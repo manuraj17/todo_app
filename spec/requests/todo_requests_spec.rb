@@ -6,7 +6,7 @@ RSpec.describe 'todo requests', :type => :request do
 
     post "/api/todos", params
 
-    expect(last_response).to be_ok
+    expect(last_response).to be_created
     body = JSON.parse(last_response.body)
 
     expect(body["message"]).to eq("Todo created succesfully")
@@ -21,7 +21,7 @@ RSpec.describe 'todo requests', :type => :request do
 
     post "/api/todos", params
 
-    expect(last_response).to be_ok
+    expect(last_response).to be_created
     body = JSON.parse(last_response.body)
 
     expect(body["result"]["id"]).not_to be_nil
@@ -56,7 +56,7 @@ RSpec.describe 'todo requests', :type => :request do
     new_list = List.new("second list")
 
     post "/api/todos/#{todo.id}/copy", { list_id: new_list.id }
-    expect(last_response).to be_ok
+    expect(last_response).to be_created
 
     expect(new_list.todos).to match_array([todo.id])
   end
@@ -70,7 +70,7 @@ RSpec.describe 'todo requests', :type => :request do
     params = { old_list_id: list.id, new_list_id: new_list.id }
 
     post "/api/todos/#{todo.id}/move", params
-    expect(last_response).to be_ok
+    expect(last_response).to be_created
 
     expect(list.todos).not_to include(todo.id)
   end

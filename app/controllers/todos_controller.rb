@@ -1,5 +1,7 @@
 class TodosController < ApplicationController
   post '/api/todos' do
+    status 201
+
     todo = Todo.new(params[:description], params[:due_date], params[:reminder])
     list = List.find(params[:list_id])
 
