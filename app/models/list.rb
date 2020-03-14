@@ -26,10 +26,4 @@ class List
   def delete(todo_id)
     @todos.reject! { |value| value == todo_id.to_i }
   end
-
-  def self.show
-    @@lists.each do |list|
-      puts list.id, list.name
-    end
-  end
 end

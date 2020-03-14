@@ -22,12 +22,6 @@ class Todo
     @@todos.delete(self)
   end
 
-  def self.show
-    @@todos.each do |todo|
-      puts todo.id, todo.description
-    end
-  end
-
   def update(params)
     @description = params["description"] if params["description"] != nil
     @due_date = params["due_date"] if params["due_date"] != nil
