@@ -1,8 +1,6 @@
 require 'date'
 require 'spec_helper'
 
-require_relative '../../lib/list'
-
 RSpec.describe 'Testing List' do
   before(:each) do
     List.class_variable_set :@@lists, []

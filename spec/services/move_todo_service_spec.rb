@@ -1,9 +1,6 @@
 require 'date'
 require 'spec_helper'
 
-require_relative '../../lib/move_todo'
-require_relative '../../lib/list'
-
 RSpec.describe 'Moving todos across lists' do
   context 'Move frome one list to next' do
     it 'todo is present only in one list' do
@@ -18,7 +15,7 @@ RSpec.describe 'Moving todos across lists' do
       expect(list_1.todos).to match_array([1,2])
       expect(list_2.todos).to match_array([3,4])
 
-      MoveTodo.perform(list_2.id, list_1.id, 3)
+      MoveTodoService.perform(list_2.id, list_1.id, 3)
 
       expect(list_1.todos).to match_array([1,2,3])
       expect(list_2.todos).to match_array([4])

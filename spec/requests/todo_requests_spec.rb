@@ -1,13 +1,10 @@
 require 'spec_helper'
 
-require_relative '../../lib/list'
-require_relative '../../lib/todo'
-
 RSpec.describe 'todo requests', :type => :request do
   it 'create todo request' do
     params = { description: "Finish assignment", list_id: 1 }
 
-    post "/todos", params
+    post "/api/todos", params
 
     expect(last_response).to be_ok
     body = JSON.parse(last_response.body)
@@ -22,7 +19,7 @@ RSpec.describe 'todo requests', :type => :request do
   it 'updates a todo' do
     params = { description: "Finish assignment", list_id: 1 }
 
-    post "/todos", params
+    post "/api/todos", params
 
     expect(last_response).to be_ok
     body = JSON.parse(last_response.body)
@@ -31,7 +28,7 @@ RSpec.describe 'todo requests', :type => :request do
 
     params = { description: "Finish problem 1" }
     id = body["result"]["id"]
-    put "/todos/#{id}", params
+    put "/api/todos/#{id}", params
 
     body = JSON.parse(last_response.body)
 
@@ -44,7 +41,7 @@ RSpec.describe 'todo requests', :type => :request do
     list.add(todo.id)
     params = { id: todo.id }
 
-    delete '/todos', params
+    delete '/api/todos', params
     expect(last_response).to be_ok
 
     result = Todo.find(todo.id)
@@ -58,7 +55,7 @@ RSpec.describe 'todo requests', :type => :request do
 
     new_list = List.new("second list")
 
-    post "/todos/#{todo.id}/add", { list_id: new_list.id }
+    post "/api/todos/#{todo.id}/copy", { list_id: new_list.id }
     expect(last_response).to be_ok
 
     expect(new_list.todos).to match_array([todo.id])
@@ -72,7 +69,7 @@ RSpec.describe 'todo requests', :type => :request do
     new_list = List.new("second list")
     params = { old_list_id: list.id, new_list_id: new_list.id }
 
-    post "/todos/#{todo.id}/move", params
+    post "/api/todos/#{todo.id}/move", params
     expect(last_response).to be_ok
 
     expect(list.todos).not_to include(todo.id)

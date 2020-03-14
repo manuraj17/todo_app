@@ -1,8 +1,6 @@
 require 'date'
 require 'spec_helper'
 
-require_relative '../../lib/todo'
-
 RSpec.describe 'Testing Todos' do
   before(:each) do
     Todo.class_variable_set :@@todos, []
