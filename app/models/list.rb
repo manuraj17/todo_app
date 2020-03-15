@@ -4,7 +4,7 @@
 class List
   DEFAULT = 'default'
 
-  attr_accessor :id, :name, :todos, :add
+  attr_accessor :id, :name, :todos, :add, :all
 
   @@lists = []
   @@counter = 0
@@ -20,6 +20,12 @@ class List
 
   def self.find(id)
     @@lists.detect { |list| list.id == id.to_i }
+  end
+
+  def self.all
+    @@lists.map do |list|
+      { id: list.id, name: list.name, todos: list.todos }
+    end
   end
 
   def add(todo_id)

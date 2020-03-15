@@ -5,7 +5,7 @@ A simple TODO app.
 # Starting the app
 ```
 bundle exec rackup
-```  
+```
 App will be started at port `9292` by default
 
 # Development
@@ -16,9 +16,9 @@ bundle exec rspec
 
 # API
 
-Currently, user creation is not considered.  
-It is assumed that the user exists and all the `ToDos` are created for a user  
-who is identified via Authentication. Clearly for this, Authentication is also  
+Currently, user creation is not considered.
+It is assumed that the user exists and all the `ToDos` are created for a user
+who is identified via Authentication. Clearly for this, Authentication is also
 not considered.
 
 ## Create TODO
@@ -29,9 +29,9 @@ POST /api/todos
   "description" : "Finish Assignment",
   "list_id" : 1
 }
-```  
+```
 
-Response  
+Response
 ```
 {
   "message": "Todo created succesfully",
@@ -51,16 +51,16 @@ Response
 PUT /api/todos/:id
 
 {
-  "description" : "updated todo" 
+  "description" : "updated todo"
 }
-```  
+```
 
 Response
 ```
 {
     "message": "Todo updated succesfully"
 }
-```  
+```
 
 ## Delete TODO
 ```
@@ -71,7 +71,7 @@ DELETE /api/todos
 }
 ```
 
-Response  
+Response
 ```
 {
     "message": "Todo removed succesfully"
@@ -87,7 +87,7 @@ POST /api/todos/:id/copy
 }
 ```
 
-Response  
+Response
 ```
 {
   "message": "Todo added succesfully"
@@ -102,14 +102,14 @@ POST /api/todos/:id/move
   "old_list_id": 3,
   "new_list_id": 2
 }
-```  
+```
 
-Response  
+Response
 ```
 {
   "message": "Todo moved succesfully"
 }
-```  
+```
 
 ## Create new list
 ```
@@ -118,7 +118,7 @@ POST /api/lists
 {
   "name": "college"
 }
-```  
+```
 
 Response
 ```
@@ -131,3 +131,45 @@ Response
     }
 }
 ```
+
+## View all lists
+```
+GET /api/lists
+```
+Response
+```
+{
+    "count": 2,
+    "list": [
+        {
+            "id": 1,
+            "name": "default",
+            "todos": [
+                1
+            ]
+        },
+        {
+            "id": 2,
+            "name": "college",
+            "todos": []
+        }
+    ]
+}
+```
+
+## View a list
+```
+GET /api/list/:id
+```
+
+Response
+```
+{
+  "list": {
+    "id": 2,
+      "name": "college",
+      "todos": [1]
+  }
+}
+```
+
