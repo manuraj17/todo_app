@@ -25,6 +25,17 @@ class TodosController < ApplicationController
     end
   end
 
+  get '/api/todos/:id' do
+    todo = Todo.find(params['id'])
+
+    json(
+      id: todo.id,
+      description: todo.description,
+      due_date: todo.due_date,
+      reminder: todo.reminder
+    )
+  end
+
   put '/api/todos/:id' do
     todo = Todo.find(params['id'])
     if todo.update(params)

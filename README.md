@@ -44,6 +44,19 @@ Response
       }
     }
 }
+```  
+## View a TODO
+```
+GET /api/todos/:id
+```
+Response  
+```
+{
+    "id": 1,
+    "description": "study physics",
+    "due_date": null,
+    "reminder": null
+}
 ```
 
 ## Update TODO

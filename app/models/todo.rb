@@ -20,6 +20,17 @@ class Todo
     @@todos.find { |todo| todo.id == id.to_i }
   end
 
+  def self.all
+    @@todos.map do |todo|
+      {
+        id: todo.id,
+        description: todo.description,
+        due_date: todo.due_date,
+        reminder: todo.reminder
+      }
+    end
+  end
+
   def delete
     @@todos.delete(self)
   end
