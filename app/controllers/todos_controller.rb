@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TodosController < ApplicationController
   post '/api/todos' do
     status 201
@@ -7,7 +9,7 @@ class TodosController < ApplicationController
 
     if list.add(todo.id)
       json(
-        message: "Todo created succesfully",
+        message: 'Todo created successfully',
         result: {
           id: todo.id,
           description: todo.description,
@@ -19,16 +21,16 @@ class TodosController < ApplicationController
       )
     else
       todo.delete
-      json(message: "Failed to create todo")
+      json(message: 'Failed to create todo')
     end
   end
 
   put '/api/todos/:id' do
     todo = Todo.find(params['id'])
     if todo.update(params)
-      json message: "Todo updated succesfully"
+      json message: 'Todo updated successfully'
     else
-      json(message: "Failed to update Todo")
+      json(message: 'Failed to update Todo')
     end
   end
 
@@ -36,6 +38,6 @@ class TodosController < ApplicationController
     todo = Todo.find(params[:id])
     todo.delete
 
-    json(message: "Todo removed succesfully")
+    json(message: 'Todo removed successfully')
   end
 end

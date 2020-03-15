@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 require 'spec_helper'
 
@@ -12,12 +14,12 @@ RSpec.describe 'Moving todos across lists' do
       list_2.add(3)
       list_2.add(4)
 
-      expect(list_1.todos).to match_array([1,2])
-      expect(list_2.todos).to match_array([3,4])
+      expect(list_1.todos).to match_array([1, 2])
+      expect(list_2.todos).to match_array([3, 4])
 
       MoveTodoService.perform(list_2.id, list_1.id, 3)
 
-      expect(list_1.todos).to match_array([1,2,3])
+      expect(list_1.todos).to match_array([1, 2, 3])
       expect(list_2.todos).to match_array([4])
     end
   end

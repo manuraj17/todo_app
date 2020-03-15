@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MoveTodosController < ApplicationController
   post '/api/todos/:id/move' do
     status 201
@@ -8,6 +10,6 @@ class MoveTodosController < ApplicationController
       params[:id]
     )
 
-    json(message: "Todo moved succesfully")
+    json(message: 'Todo moved succesfully')
   end
 end

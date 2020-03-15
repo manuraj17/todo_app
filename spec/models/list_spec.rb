@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 require 'date'
-require 'spec_helper'
 
 RSpec.describe 'Testing List' do
   before(:each) do
@@ -9,10 +10,10 @@ RSpec.describe 'Testing List' do
 
   context 'creating a list' do
     it 'creates a default list' do
-      list = List.new()
+      list = List.new
 
       expect(list.id).to eq(1)
-      expect(list.name).to eq("default")
+      expect(list.name).to eq('default')
     end
 
     it 'increments the counter' do

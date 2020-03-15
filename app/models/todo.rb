@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Todo
   attr_accessor :id, :description, :due_date, :completed, :reminder
 
@@ -23,9 +25,9 @@ class Todo
   end
 
   def update(params)
-    @description = params["description"] if params["description"] != nil
-    @due_date = params["due_date"] if params["due_date"] != nil
-    @reminder = params["reminder"] if params["reminder"] != nil
+    @description = params['description'] unless params['description'].nil?
+    @due_date = params['due_date'] unless params['due_date'].nil?
+    @reminder = params['reminder'] unless params['reminder'].nil?
     true
   end
 end

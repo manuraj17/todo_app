@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# rubocop:disable Lint/DuplicateMethods
 class List
-  DEFAULT = "default".freeze
+  DEFAULT = 'default'
 
   attr_accessor :id, :name, :todos, :add
 
@@ -27,3 +30,4 @@ class List
     @todos.reject! { |value| value == todo_id.to_i }
   end
 end
+# rubocop:enable Lint/DuplicateMethods
