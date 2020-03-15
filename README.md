@@ -55,7 +55,6 @@ Response
     "id": 1,
     "description": "study physics",
     "due_date": null,
-    "reminder": null
 }
 ```
 
@@ -186,3 +185,23 @@ Response
 }
 ```
 
+## Add a reminder for a todo
+```
+POST /api/todos/:id/reminders
+
+{
+  todo_id: 1,
+  time_at: "2020-03-17T15:57:15+05:30"
+}
+```  
+Response
+```
+{
+  "message": "Reminder created successfully",
+  "result": {
+      "id": 1,
+      "todo_description": "study physics",
+      "time_at": "2020-03-17T15:57:15+05:30"
+  }
+}
+```

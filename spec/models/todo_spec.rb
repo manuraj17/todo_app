@@ -15,7 +15,6 @@ RSpec.describe 'Testing Todos' do
       expect(todo.id).not_to be_nil
       expect(todo.description).to eq('Todo Test 1')
       expect(todo.due_date).to be_nil
-      expect(todo.reminder).to be_nil
 
       result = Todo.find(todo.id)
       expect(result).to eq(todo)
@@ -52,7 +51,6 @@ RSpec.describe 'Testing Todos' do
       result = Todo.find(todo.id)
       expect(result.description).to eq('Updated text')
       expect(result.due_date).to eq(Date.today + 2)
-      expect(result.reminder).to eq(Date.today)
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ListsSerializerService
   def self.perform(lists)
     lists.map do |list|

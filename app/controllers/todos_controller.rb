@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   post '/api/todos' do
     status 201
 
-    todo = Todo.new(params[:description], params[:due_date], params[:reminder])
+    todo = Todo.new(params[:description], params[:due_date])
     list = List.find(params[:list_id])
 
     if list.add(todo.id)
@@ -31,8 +31,7 @@ class TodosController < ApplicationController
     json(
       id: todo.id,
       description: todo.description,
-      due_date: todo.due_date,
-      reminder: todo.reminder
+      due_date: todo.due_date
     )
   end
 

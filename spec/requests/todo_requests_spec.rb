@@ -96,7 +96,7 @@ RSpec.describe 'Todo requests', type: :request do
 
     lists = body['list'].map { |list| list['name'] }
 
-    expect(lists).to match_array(['default', 'work', 'health'])
+    expect(lists).to match_array(%w[default work health])
   end
 
   it 'retrieves a todo' do

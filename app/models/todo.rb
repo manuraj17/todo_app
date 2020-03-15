@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 class Todo
-  attr_accessor :id, :description, :due_date, :completed, :reminder
+  attr_accessor :id, :description, :due_date, :completed
 
   @@todos = []
   @@counter = 0
 
-  def initialize(description, due_date = nil, reminder = nil)
+  def initialize(description, due_date = nil)
     @id = @@counter + 1
     @description = description
     @due_date = due_date
-    @reminder = reminder
 
     @@todos << self
     @@counter += 1
@@ -31,7 +30,6 @@ class Todo
   def update(params)
     @description = params['description'] unless params['description'].nil?
     @due_date = params['due_date'] unless params['due_date'].nil?
-    @reminder = params['reminder'] unless params['reminder'].nil?
     true
   end
 end

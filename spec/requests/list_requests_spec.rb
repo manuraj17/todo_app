@@ -17,7 +17,7 @@ RSpec.describe 'List requests', type: :request do
 
     lists = body['list'].map { |list| list['name'] }
 
-    expect(lists).to match_array(['work', 'health'])
+    expect(lists).to match_array(%w[work health])
   end
 
   it 'creates a list' do

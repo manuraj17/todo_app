@@ -16,5 +16,6 @@ class App < Sinatra::Application
   use ListsController
   use MoveTodosController
   use CopyTodosController
+  use RemindersController
   use TodosController
 end

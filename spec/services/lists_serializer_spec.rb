@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ListsSerializerService do
   describe 'serializers a collection of todos' do
     before(:each) do
@@ -11,8 +13,8 @@ RSpec.describe ListsSerializerService do
     end
 
     it 'returns a hash in expected format' do
-      List.new("personal")
-      List.new("office")
+      List.new('personal')
+      List.new('office')
 
       result = described_class.perform(List.all)
 
