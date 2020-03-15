@@ -21,14 +21,7 @@ class Todo
   end
 
   def self.all
-    @@todos.map do |todo|
-      {
-        id: todo.id,
-        description: todo.description,
-        due_date: todo.due_date,
-        reminder: todo.reminder
-      }
-    end
+    @@todos
   end
 
   def delete

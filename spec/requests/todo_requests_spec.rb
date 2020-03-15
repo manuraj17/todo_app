@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+RSpec.describe 'Todo requests', type: :request do
+  before(:each) do
+    List.class_variable_set :@@lists, []
+    List.class_variable_set :@@counter, 0
 
-RSpec.describe 'todo requests', type: :request do
+    Todo.class_variable_set :@@todos, []
+    Todo.class_variable_set :@@counter, 0
+
+    List.new('default')
+  end
+
   it 'create todo request' do
     params = { description: 'Finish assignment', list_id: 1 }
 
@@ -75,5 +83,30 @@ RSpec.describe 'todo requests', type: :request do
     expect(last_response).to be_created
 
     expect(list.todos).not_to include(todo.id)
+  end
+
+  it 'retrieves all lists' do
+    List.new('work')
+    List.new('health')
+
+    get '/api/lists'
+
+    expect(last_response).to be_ok
+    body = JSON.parse(last_response.body)
+
+    lists = body['list'].map { |list| list['name'] }
+
+    expect(lists).to match_array(['default', 'work', 'health'])
+  end
+
+  it 'retrieves a todo' do
+    todo = Todo.new('todo 1')
+
+    get "/api/todos/#{todo.id}"
+
+    expect(last_response).to be_ok
+    body = JSON.parse(last_response.body)
+
+    expect(body['description']).to eq('todo 1')
   end
 end
