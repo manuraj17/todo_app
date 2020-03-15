@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   get '/api/lists' do
     json(
       count: List.all.length,
-      list: List.all
+      list: ListsSerializerService.perform(List.all)
     )
   end
 

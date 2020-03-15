@@ -23,9 +23,7 @@ class List
   end
 
   def self.all
-    @@lists.map do |list|
-      { id: list.id, name: list.name, todos: list.todos }
-    end
+    @@lists
   end
 
   def add(todo_id)
