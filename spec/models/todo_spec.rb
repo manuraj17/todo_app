@@ -10,7 +10,7 @@ RSpec.describe 'Testing Todos' do
 
   context 'creating a todo' do
     it 'stores the created todo' do
-      todo = Todo.new('Todo Test 1', nil, nil)
+      todo = Todo.new('Todo Test 1', nil)
 
       expect(todo.id).not_to be_nil
       expect(todo.description).to eq('Todo Test 1')
@@ -42,7 +42,7 @@ RSpec.describe 'Testing Todos' do
     end
 
     it 'udpates an existing todo' do
-      todo = Todo.new('test_1', Date.today + 2, Date.today)
+      todo = Todo.new('test_1', Date.today + 2)
 
       expect(todo.description).to eq('test_1')
 
